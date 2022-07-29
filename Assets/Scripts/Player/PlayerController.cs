@@ -14,36 +14,50 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private SpriteRenderer spriteRenderer;
     private Vector2 movementInput;
     private List<RaycastHit2D> castCollision = new List<RaycastHit2D>();
+    private bool canMove = true;
 
     private void FixedUpdate()
     {
-        // If movement input value is not 0, try to move.
-        if (movementInput != Vector2.zero)
+        if (canMove)
         {
-            bool success = TryMove(movementInput);
-
-            // Sliding on edges of collision.
-            if (!success)
+            // If movement input value is not 0, try to move.
+            if (movementInput != Vector2.zero)
             {
-                success = TryMove(new Vector2(movementInput.x, 0));
-            }
-            
-            if (!success)
-            {
-                success = TryMove(new Vector2(0, movementInput.y));
-            }
-            
-            animator.SetBool("isMoving", success);
-        }
+                bool success = TryMove(movementInput);
 
-        else
-        {
-            animator.SetBool("isMoving", false);
-        }
+                // Sliding on edges of collision.
+                if (!success)
+                {
+                    success = TryMove(new Vector2(movementInput.x, 0));
+                }
+            
+                if (!success)
+                {
+                    success = TryMove(new Vector2(0, movementInput.y));
+                }
+            
+                animator.SetBool("isMoving", success);
+            }
+
+            else
+            {
+                animator.SetBool("isMoving", false);
+            }
         
-        FlipFace();
+            FlipFace();
+        }
+    }
+    
+    private void OnMove(InputValue movementValue)
+    {
+        movementInput = movementValue.Get<Vector2>();
     }
 
+    private void OnFire()
+    {
+        animator.SetTrigger("swordAttack");
+    }
+    
     private bool TryMove(Vector2 direction)
     {
         if (direction != Vector2.zero)
@@ -86,9 +100,14 @@ public class PlayerController : MonoBehaviour
             spriteRenderer.flipX = false;
         }
     }
-    
-    private void OnMove(InputValue movementValue)
+
+    public void LockMovement()
     {
-        movementInput = movementValue.Get<Vector2>();
+        canMove = false;
+    }
+
+    public void UnlockMovement()
+    {
+        canMove = true;
     }
 }
