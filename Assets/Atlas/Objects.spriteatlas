@@ -1,0 +1,82 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!687078895 &4343727234628468602
+SpriteAtlas:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Objects
+  m_EditorData:
+    serializedVersion: 2
+    textureSettings:
+      serializedVersion: 2
+      anisoLevel: 1
+      compressionQuality: 50
+      maxTextureSize: 2048
+      textureCompression: 0
+      filterMode: 0
+      generateMipMaps: 0
+      readable: 0
+      crunchedCompression: 0
+      sRGB: 1
+    platformSettings:
+    - serializedVersion: 3
+      m_BuildTarget: Standalone
+      m_MaxTextureSize: 2048
+      m_ResizeAlgorithm: 0
+      m_TextureFormat: 4
+      m_TextureCompression: 1
+      m_CompressionQuality: 50
+      m_CrunchedCompression: 0
+      m_AllowsAlphaSplitting: 0
+      m_Overridden: 1
+      m_AndroidETC2FallbackOverride: 0
+      m_ForceMaximumCompressionQuality_BC6H_BC7: 0
+    packingSettings:
+      serializedVersion: 2
+      padding: 4
+      blockOffset: 1
+      allowAlphaSplitting: 0
+      enableRotation: 1
+      enableTightPacking: 1
+      enableAlphaDilation: 0
+    secondaryTextureSettings: {}
+    variantMultiplier: 1
+    packables:
+    - {fileID: 102900000, guid: a54b0c2d67154b94cb9331ab4a32e700, type: 3}
+    bindAsDefault: 1
+    isAtlasV2: 0
+    cachedData: {fileID: 0}
+  m_MasterAtlas: {fileID: 0}
+  m_PackedSprites:
+  - {fileID: 21300000, guid: 4c37acb31ca5f244aa5641bf2a3fa2ce, type: 3}
+  - {fileID: 21300000, guid: 62524f05e36cc914084f8656394df3e2, type: 3}
+  - {fileID: 911168610, guid: 95d295584d6068e499af1cbae507c1ca, type: 3}
+  - {fileID: 1089629943, guid: 95d295584d6068e499af1cbae507c1ca, type: 3}
+  - {fileID: 1645204068, guid: 95d295584d6068e499af1cbae507c1ca, type: 3}
+  - {fileID: 1438257378, guid: 95d295584d6068e499af1cbae507c1ca, type: 3}
+  - {fileID: -1948748700, guid: 95d295584d6068e499af1cbae507c1ca, type: 3}
+  - {fileID: -692146156, guid: 95d295584d6068e499af1cbae507c1ca, type: 3}
+  - {fileID: 631939539, guid: 95d295584d6068e499af1cbae507c1ca, type: 3}
+  - {fileID: 1353385615, guid: 95d295584d6068e499af1cbae507c1ca, type: 3}
+  - {fileID: 159347757, guid: 95d295584d6068e499af1cbae507c1ca, type: 3}
+  - {fileID: 21300000, guid: 513090c983009bf4ba17371b10a64ad2, type: 3}
+  - {fileID: 21300000, guid: 03745cfbe5578dd4aa07f5a00d961703, type: 3}
+  m_PackedSpriteNamesToIndex:
+  - Sign_ArrowLeft
+  - Chest01
+  - Objects_8
+  - Objects_4
+  - Objects_5
+  - Objects_6
+  - Objects_7
+  - Objects_0
+  - Objects_1
+  - Objects_2
+  - Objects_3
+  - Sign_ArrowRight
+  - Chest_Orange_1
+  m_RenderDataMap: {}
+  m_Tag: Objects
+  m_IsVariant: 0
