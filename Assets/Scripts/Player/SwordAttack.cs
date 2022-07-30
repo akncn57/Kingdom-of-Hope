@@ -1,19 +1,31 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class SwordAttack : MonoBehaviour
 {
+    #region Inspector Fields
+    
     [SerializeField] private Collider2D swordCollider;
+    
+    #endregion
+    
+    #region Private Fields
+    
     private Vector2 rightAttackOffset;
-
+    
+    #endregion
+    
+    #region Unity LifeCycle
+    
     private void Start()
     {
         // Get default position of attack offset.
         rightAttackOffset = transform.position;
     }
+    
+    #endregion
 
+    #region Public Methods
+    
     public void AttackRight()
     {
         swordCollider.enabled = true;
@@ -30,4 +42,6 @@ public class SwordAttack : MonoBehaviour
     {
         swordCollider.enabled = false;
     }
+    
+    #endregion
 }

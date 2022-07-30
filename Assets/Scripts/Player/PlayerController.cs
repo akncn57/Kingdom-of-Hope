@@ -1,11 +1,11 @@
-using System;
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
 public class PlayerController : MonoBehaviour
 {
+    #region Inspector Fields
+    
     [SerializeField] private float moveSpeed = 1f;
     [SerializeField] private float collisionOffset = 0.05f;
     [SerializeField] private Rigidbody2D rb;
@@ -13,10 +13,19 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private Animator animator;
     [SerializeField] private SpriteRenderer spriteRenderer;
     [SerializeField] private SwordAttack swordAttack;
+    
+    #endregion
+    
+    #region Private Fields
+    
     private Vector2 movementInput;
     private List<RaycastHit2D> castCollision = new List<RaycastHit2D>();
     private bool canMove = true;
-
+    
+    #endregion
+    
+    #region Unity LifeCycle
+    
     private void FixedUpdate()
     {
         if (canMove)
@@ -49,6 +58,10 @@ public class PlayerController : MonoBehaviour
         }
     }
     
+    #endregion
+
+    #region PlayerController Event Methods
+    
     private void OnMove(InputValue movementValue)
     {
         movementInput = movementValue.Get<Vector2>();
@@ -59,6 +72,10 @@ public class PlayerController : MonoBehaviour
         animator.SetTrigger("swordAttack");
     }
     
+    #endregion
+
+    #region Private Methods
+
     private bool TryMove(Vector2 direction)
     {
         if (direction != Vector2.zero)
@@ -101,6 +118,10 @@ public class PlayerController : MonoBehaviour
             spriteRenderer.flipX = false;
         }
     }
+    
+    #endregion
+
+    #region Public Methods
 
     public void SwordAttack()
     {
@@ -110,12 +131,12 @@ public class PlayerController : MonoBehaviour
         if (spriteRenderer.flipX == true)
         {
             swordAttack.AttackLeft();
-            Debug.Log("Attack left!");
+            // Debug.Log("Attack left!");
         }
         else
         {
             swordAttack.AttackRight();
-            Debug.Log("Attack right!");
+            // Debug.Log("Attack right!");
         }
     }
 
@@ -134,4 +155,6 @@ public class PlayerController : MonoBehaviour
     {
         canMove = true;
     }
+    
+    #endregion
 }
