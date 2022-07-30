@@ -62,6 +62,7 @@ SpriteAtlas:
   - {fileID: 1353385615, guid: 95d295584d6068e499af1cbae507c1ca, type: 3}
   - {fileID: 159347757, guid: 95d295584d6068e499af1cbae507c1ca, type: 3}
   - {fileID: 21300000, guid: 513090c983009bf4ba17371b10a64ad2, type: 3}
+  - {fileID: 21300000, guid: d39eaa7a44fa70246b4f647ab6057140, type: 3}
   - {fileID: 21300000, guid: 03745cfbe5578dd4aa07f5a00d961703, type: 3}
   m_PackedSpriteNamesToIndex:
   - Sign_ArrowLeft
@@ -76,6 +77,7 @@ SpriteAtlas:
   - Objects_2
   - Objects_3
   - Sign_ArrowRight
+  - Chest_Orange_2
   - Chest_Orange_1
   m_RenderDataMap: {}
   m_Tag: Objects

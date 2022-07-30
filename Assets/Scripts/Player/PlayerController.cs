@@ -12,6 +12,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private ContactFilter2D movementFilter;
     [SerializeField] private Animator animator;
     [SerializeField] private SpriteRenderer spriteRenderer;
+    [SerializeField] private SwordAttack swordAttack;
     private Vector2 movementInput;
     private List<RaycastHit2D> castCollision = new List<RaycastHit2D>();
     private bool canMove = true;
@@ -99,6 +100,29 @@ public class PlayerController : MonoBehaviour
         {
             spriteRenderer.flipX = false;
         }
+    }
+
+    public void SwordAttack()
+    {
+        LockMovement();
+        
+        // Check sprite direction and set attack direction.
+        if (spriteRenderer.flipX == true)
+        {
+            swordAttack.AttackLeft();
+            Debug.Log("Attack left!");
+        }
+        else
+        {
+            swordAttack.AttackRight();
+            Debug.Log("Attack right!");
+        }
+    }
+
+    public void StopSwordAttack()
+    {
+        UnlockMovement();
+        swordAttack.StopAttack();
     }
 
     public void LockMovement()
