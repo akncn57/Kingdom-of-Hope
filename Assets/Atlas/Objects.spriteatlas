@@ -51,7 +51,7 @@ SpriteAtlas:
   m_MasterAtlas: {fileID: 0}
   m_PackedSprites:
   - {fileID: 21300000, guid: 4c37acb31ca5f244aa5641bf2a3fa2ce, type: 3}
-  - {fileID: 21300000, guid: 62524f05e36cc914084f8656394df3e2, type: 3}
+  - {fileID: 21300000, guid: 0c58e0e6043f3b74ca7418090be1efb5, type: 3}
   - {fileID: 911168610, guid: 95d295584d6068e499af1cbae507c1ca, type: 3}
   - {fileID: 1089629943, guid: 95d295584d6068e499af1cbae507c1ca, type: 3}
   - {fileID: 1645204068, guid: 95d295584d6068e499af1cbae507c1ca, type: 3}
@@ -66,7 +66,7 @@ SpriteAtlas:
   - {fileID: 21300000, guid: 03745cfbe5578dd4aa07f5a00d961703, type: 3}
   m_PackedSpriteNamesToIndex:
   - Sign_ArrowLeft
-  - Chest01
+  - Rock_1
   - Objects_8
   - Objects_4
   - Objects_5
