@@ -97,7 +97,6 @@ public class PlayerController : MonoBehaviour
                 return false;
             }
         }
-
         else
         {
             // Can't move if there's no direction to move in.
@@ -112,7 +111,6 @@ public class PlayerController : MonoBehaviour
         {
             spriteRenderer.flipX = true;
         }
-        
         else if (movementInput.x > 0)
         {
             spriteRenderer.flipX = false;
