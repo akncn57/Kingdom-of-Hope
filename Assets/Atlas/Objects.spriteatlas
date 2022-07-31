@@ -53,6 +53,7 @@ SpriteAtlas:
   - {fileID: 21300000, guid: fe1069e1ebc0fd94d8a6cca2f2aafb9a, type: 3}
   - {fileID: 21300000, guid: 18a23a82ae959fe45a1fde25ee4dddaf, type: 3}
   - {fileID: 21300000, guid: 4c37acb31ca5f244aa5641bf2a3fa2ce, type: 3}
+  - {fileID: 21300000, guid: f2ef9194b95e43c419424b89f398e428, type: 3}
   - {fileID: 21300000, guid: 0c58e0e6043f3b74ca7418090be1efb5, type: 3}
   - {fileID: 21300000, guid: 513090c983009bf4ba17371b10a64ad2, type: 3}
   - {fileID: 21300000, guid: d39eaa7a44fa70246b4f647ab6057140, type: 3}
@@ -61,6 +62,7 @@ SpriteAtlas:
   - Tree_Stump_1
   - Tree_1
   - Sign_ArrowLeft
+  - Tree_2
   - Rock_1
   - Sign_ArrowRight
   - Chest_Orange_2
