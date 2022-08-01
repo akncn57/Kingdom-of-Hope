@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 5679968831525031242}
   - component: {fileID: 7964577245297402107}
   m_Layer: 0
-  m_Name: Chest_Orange
+  m_Name: Object_Chest_Orange
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -84,7 +84,7 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
-  m_SpriteSortPoint: 0
+  m_SpriteSortPoint: 1
 --- !u!61 &7964577245297402107
 BoxCollider2D:
   m_ObjectHideFlags: 0
