@@ -11,10 +11,11 @@ GameObject:
   - component: {fileID: 4864161454972156551}
   - component: {fileID: 6903487521155141971}
   - component: {fileID: 8354659973496184074}
-  - component: {fileID: 1996482250145710010}
   - component: {fileID: 5125710748583305191}
   - component: {fileID: 2657516772914875886}
   - component: {fileID: 4466319070841836962}
+  - component: {fileID: 1996482250145710010}
+  - component: {fileID: 8497834972653614136}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -120,38 +121,6 @@ MonoBehaviour:
   m_DefaultActionMap: Player
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
---- !u!114 &1996482250145710010
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2221572524271744229}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 48676f1f3ee06b547853f197fb012d07, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  moveSpeed: 1
-  collisionOffset: 0.02
-  rb: {fileID: 5125710748583305191}
-  movementFilter:
-    useTriggers: 0
-    useLayerMask: 0
-    useDepth: 0
-    useOutsideDepth: 0
-    useNormalAngle: 0
-    useOutsideNormalAngle: 0
-    layerMask:
-      serializedVersion: 2
-      m_Bits: 1
-    minDepth: 0
-    maxDepth: 0
-    minNormalAngle: 0
-    maxNormalAngle: 0
-  animator: {fileID: 4466319070841836962}
-  spriteRenderer: {fileID: 6903487521155141971}
-  swordAttack: {fileID: 3831211383391025030}
 --- !u!50 &5125710748583305191
 Rigidbody2D:
   serializedVersion: 4
@@ -172,7 +141,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!61 &2657516772914875886
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -219,6 +188,52 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &1996482250145710010
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2221572524271744229}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 48676f1f3ee06b547853f197fb012d07, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  moveSpeed: 1
+  collisionOffset: 0.02
+  rb: {fileID: 5125710748583305191}
+  movementFilter:
+    useTriggers: 0
+    useLayerMask: 0
+    useDepth: 0
+    useOutsideDepth: 0
+    useNormalAngle: 0
+    useOutsideNormalAngle: 0
+    layerMask:
+      serializedVersion: 2
+      m_Bits: 1
+    minDepth: 0
+    maxDepth: 0
+    minNormalAngle: 0
+    maxNormalAngle: 0
+  animator: {fileID: 4466319070841836962}
+  spriteRenderer: {fileID: 6903487521155141971}
+  swordAttack: {fileID: 3831211383391025030}
+  takeDamageJump: 20
+--- !u!114 &8497834972653614136
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2221572524271744229}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c4f302db4744a1d4eb1a61085ba7fa07, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playercontroller: {fileID: 1996482250145710010}
 --- !u!1 &3933684648002062196
 GameObject:
   m_ObjectHideFlags: 0
