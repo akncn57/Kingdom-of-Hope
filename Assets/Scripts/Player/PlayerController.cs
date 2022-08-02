@@ -13,7 +13,6 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private Animator animator;
     [SerializeField] private SpriteRenderer spriteRenderer;
     [SerializeField] private SwordAttack swordAttack;
-    [SerializeField] private float takeDamageJump;
     
     #endregion
     
