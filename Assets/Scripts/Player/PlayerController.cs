@@ -1,35 +1,72 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
-using KingdomOfHope.Inputs;
 using UnityEngine;
+using KingdomOfHope.Inputs;
 
 public class PlayerController : MonoBehaviour
 {
-    [SerializeField] private Rigidbody2D rigidbody;
+    #region Unity Inspector
+
+    [SerializeField] private Rigidbody2D rb;
     [SerializeField] private Animator animator;
+    [SerializeField] private SpriteRenderer playerSprite;
     [SerializeField] private float playerSpeed;
-    
+
+    #endregion
+
+    #region Private Fields
+
     private IPlayerInput input;
     private float horizontal;
     private float vertical;
     private Vector2 movement;
 
+    #endregion
+
+    #region Unity LifeCycle
+
     private void Awake()
     {
+        // Create new PC input.
         input = new PcInputs();
     }
 
     private void FixedUpdate()
     {
+        Move();
+    }
+
+    #endregion
+
+    #region Private Methods
+
+    private void Move()
+    {
+        // Get horizontal and vertical move value.
         horizontal = input.Horizontal;
         vertical = input.Vertical;
         movement.x = horizontal;
         movement.y = vertical;
 
-        Vector3 position = transform.position * playerSpeed;
-        rigidbody.MovePosition(rigidbody.position + movement * playerSpeed * Time.fixedDeltaTime);
-        
-        animator.SetFloat("Move", horizontal + vertical);
+        if (movement != Vector2.zero)
+        {
+            // If player try move.
+            FlipFace();
+            Vector3 position = transform.position * playerSpeed;
+            rb.MovePosition(rb.position + movement * playerSpeed * Time.fixedDeltaTime);
+            animator.SetFloat("speed", movement.sqrMagnitude);
+        }
     }
+
+    private void FlipFace()
+    {
+        if (movement.x < 0)
+        {
+            playerSprite.flipX = true;
+        }
+        else if (movement.x > 0)
+        {
+            playerSprite.flipX = false;
+        }
+    }
+
+    #endregion
 }
