@@ -1,5 +1,8 @@
+using System;
+using KingdomOfHope.Combats;
 using UnityEngine;
 using KingdomOfHope.Inputs;
+using KingdomOfHope.Combats;
 
 public class PlayerController : MonoBehaviour
 {
@@ -29,6 +32,11 @@ public class PlayerController : MonoBehaviour
         input = new PcInputs();
     }
 
+    private void Update()
+    {
+        Attack();
+    }
+
     private void FixedUpdate()
     {
         Move();
@@ -53,6 +61,14 @@ public class PlayerController : MonoBehaviour
             Vector3 position = transform.position * playerSpeed;
             rb.MovePosition(rb.position + movement * playerSpeed * Time.fixedDeltaTime);
             animator.SetFloat("speed", movement.sqrMagnitude);
+        }
+    }
+
+    private void Attack()
+    {
+        if (input.AttackButtonDown)
+        {
+            animator.SetTrigger("attack");
         }
     }
 
