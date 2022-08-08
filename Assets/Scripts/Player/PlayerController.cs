@@ -36,7 +36,6 @@ public class PlayerController : MonoBehaviour
     private void Update()
     {
         Attack();
-        Debug.Log("Horizontal :" + horizontal);
     }
 
     private void FixedUpdate()
