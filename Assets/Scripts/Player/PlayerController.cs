@@ -21,6 +21,7 @@ public class PlayerController : MonoBehaviour
     private float horizontal;
     private float vertical;
     private Vector2 movement;
+    //private bool canMove = true;
 
     #endregion
 
@@ -55,12 +56,18 @@ public class PlayerController : MonoBehaviour
         movement.x = horizontal;
         movement.y = vertical;
 
-        if (movement != Vector2.zero)
+        bool success = movement != Vector2.zero;
+
+        if (success)
         {
             // If player try move.
             FlipFace();
             rb.MovePosition(rb.position + movement.normalized * playerSpeed * Time.fixedDeltaTime);
-            animator.SetFloat("speed", movement.sqrMagnitude);
+            animator.SetBool("isMoving", success);
+        }
+        else
+        {
+            animator.SetBool("isMoving", false);
         }
     }
 
