@@ -59,7 +59,7 @@ public class PlayerController : MonoBehaviour
             // If player try move.
             FlipFace();
             Vector3 position = transform.position * playerSpeed;
-            rb.MovePosition(rb.position + movement * playerSpeed * Time.fixedDeltaTime);
+            rb.MovePosition(rb.position + movement.normalized * playerSpeed * Time.fixedDeltaTime);
             animator.SetFloat("speed", movement.sqrMagnitude);
         }
     }
