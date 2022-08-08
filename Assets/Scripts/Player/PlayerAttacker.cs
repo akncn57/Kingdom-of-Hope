@@ -1,20 +1,27 @@
-using System.Collections;
-using System.Collections.Generic;
 using KingdomOfHope.Animation;
-using KingdomOfHope.Combats;
 using UnityEngine;
 
 namespace KingdomOfHope.Combats
 {
     public class PlayerAttacker : Attacker
     {
+        #region Inspector Fields
+
         [SerializeField] Transform attackDirection;
         [SerializeField] float attackRadius = 1f;
+        
+        #endregion
+        
+        #region Private Fields
 
         private Collider2D[] attackResults;
         private SpriteRenderer sprite;
         private Vector2 rightAttackOffset;
         
+        #endregion
+
+        #region Unity LifeCycle
+
         private void Awake()
         {
             rightAttackOffset = attackDirection.transform.position;
@@ -31,6 +38,10 @@ namespace KingdomOfHope.Combats
         {
             GetComponent<AnimationImpactWatcher>().OnImpact -= HandleImpact;
         }
+        
+        #endregion
+        
+        #region Private Methods
 
         private void HandleImpact()
         {
@@ -62,7 +73,7 @@ namespace KingdomOfHope.Combats
 
         private void CheckPlayerFlip()
         {
-            if (sprite.flipX == true)
+            if (sprite.flipX)
             {
                 attackDirection.transform.localPosition = new Vector3(rightAttackOffset.x * -1, rightAttackOffset.y);
             }
@@ -71,5 +82,7 @@ namespace KingdomOfHope.Combats
                 attackDirection.transform.localPosition = rightAttackOffset;
             }
         }
+        
+        #endregion
     }
 }

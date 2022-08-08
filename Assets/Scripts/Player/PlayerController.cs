@@ -1,8 +1,5 @@
-using System;
-using KingdomOfHope.Combats;
 using UnityEngine;
 using KingdomOfHope.Inputs;
-using KingdomOfHope.Combats;
 
 public class PlayerController : MonoBehaviour
 {
@@ -21,7 +18,6 @@ public class PlayerController : MonoBehaviour
     private float horizontal;
     private float vertical;
     private Vector2 movement;
-    //private bool canMove = true;
 
     #endregion
 
