@@ -173,7 +173,7 @@ MonoBehaviour:
   rb: {fileID: 5860856664839952376}
   animator: {fileID: 5312490001231698254}
   playerSprite: {fileID: 5312490001231698252}
-  playerSpeed: 0.8
+  playerSpeed: 1
 --- !u!114 &3250835496475712887
 MonoBehaviour:
   m_ObjectHideFlags: 0

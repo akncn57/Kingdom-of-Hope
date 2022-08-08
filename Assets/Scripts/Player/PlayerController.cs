@@ -35,6 +35,7 @@ public class PlayerController : MonoBehaviour
     private void Update()
     {
         Attack();
+        Debug.Log("Horizontal :" + horizontal);
     }
 
     private void FixedUpdate()
@@ -58,7 +59,6 @@ public class PlayerController : MonoBehaviour
         {
             // If player try move.
             FlipFace();
-            Vector3 position = transform.position * playerSpeed;
             rb.MovePosition(rb.position + movement.normalized * playerSpeed * Time.fixedDeltaTime);
             animator.SetFloat("speed", movement.sqrMagnitude);
         }
