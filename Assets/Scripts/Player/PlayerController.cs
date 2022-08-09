@@ -1,5 +1,6 @@
 using UnityEngine;
 using KingdomOfHope.Inputs;
+using UnityEditor;
 
 public class PlayerController : MonoBehaviour
 {
@@ -18,6 +19,7 @@ public class PlayerController : MonoBehaviour
     private float horizontal;
     private float vertical;
     private Vector2 movement;
+    private bool canMove = true;
 
     #endregion
 
@@ -51,18 +53,21 @@ public class PlayerController : MonoBehaviour
         movement.x = horizontal;
         movement.y = vertical;
 
-        bool success = movement != Vector2.zero;
+        if (canMove)
+        {
+            bool success = movement != Vector2.zero;
 
-        if (success)
-        {
-            // If player try move.
-            FlipFace();
-            rb.MovePosition(rb.position + movement.normalized * playerSpeed * Time.fixedDeltaTime);
-            animator.SetBool("isMoving", success);
-        }
-        else
-        {
-            animator.SetBool("isMoving", false);
+            if (success)
+            {
+                // If player try move.
+                FlipFace();
+                rb.MovePosition(rb.position + movement.normalized * playerSpeed * Time.fixedDeltaTime);
+                animator.SetBool("isMoving", success);
+            }
+            else
+            {
+                animator.SetBool("isMoving", false);
+            }
         }
     }
 
@@ -70,7 +75,14 @@ public class PlayerController : MonoBehaviour
     {
         if (input.AttackButtonDown)
         {
-            animator.SetTrigger("attack");
+            canMove = false;
+            
+            if (!canMove)
+            {
+                animator.SetTrigger("attack");
+            }
+            
+            canMove = true;
         }
     }
 
