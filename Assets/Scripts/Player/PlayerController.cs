@@ -69,20 +69,19 @@ public class PlayerController : MonoBehaviour
                 animator.SetBool("isMoving", false);
             }
         }
+
+        else
+        {
+            animator.SetBool("isMoving", false);
+        }
     }
 
     private void Attack()
     {
         if (input.AttackButtonDown)
         {
-            canMove = false;
-            
-            if (!canMove)
-            {
-                animator.SetTrigger("attack");
-            }
-            
-            canMove = true;
+            LockMovement();
+            animator.SetTrigger("attack");
         }
     }
 
@@ -96,6 +95,17 @@ public class PlayerController : MonoBehaviour
         {
             playerSprite.flipX = false;
         }
+    }
+
+    private void LockMovement()
+    {
+        canMove = false;
+        movement = Vector3.zero;;
+    }
+
+    public void UnlockMovement()
+    {
+        canMove = true;
     }
 
     #endregion
