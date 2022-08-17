@@ -1,16 +1,24 @@
-﻿using UnityEngine;
+using UnityEngine;
+using KingdomOfHope.Combats;
 
-namespace KingdomOfHope.Combats
+public class Attacker : IAttacker
 {
-    public class Attacker : MonoBehaviour, IAttacker
+    private Transform attackDirection;
+    private float attackRadius;
+    
+    public void Attack()
     {
-        [SerializeField] private float damage;
-        
-        public float Damage => damage;
-        
-        public virtual void Attack(ITakeHit takeHit)
-        {
-            takeHit.TakeHit(this);
-        }
+        Debug.Log("Player Attacking !!!");
+    }
+    
+    private void OnDrawGizmos()
+    {
+        OnDrawGizmosSelected();
+    }
+
+    private void OnDrawGizmosSelected()
+    {
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireSphere(attackDirection.position + attackDirection.forward, attackRadius);
     }
 }

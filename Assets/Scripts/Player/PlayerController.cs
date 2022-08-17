@@ -12,12 +12,14 @@ namespace KingdomOfHope.Player
     
         private PcInputs inputs;
         private MoveWithMovePosition mover;
+        private Attacker attacker;
         private FlipFace flipFace;
 
         private void Awake()
         {
             inputs = new PcInputs();
             mover = new MoveWithMovePosition(playerspeed, rigidbody);
+            attacker = new Attacker();
             flipFace = new FlipFace();
         }
 
@@ -25,6 +27,7 @@ namespace KingdomOfHope.Player
         {
             float horizontal = inputs.Horizontal;
             float vertical = inputs.Vertical;
+            bool attackButton = inputs.AttackButtonDown;
 
             if (horizontal != 0 || vertical != 0)
             {
@@ -36,6 +39,9 @@ namespace KingdomOfHope.Player
             {
                 animator.SetBool("isMoving", false);
             }
+            
+            if (attackButton)
+                attacker.Attack();
         }
     }
 }
