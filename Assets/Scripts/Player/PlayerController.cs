@@ -1,112 +1,35 @@
+using System;
+using KingdomOfHope.Movement;
 using UnityEngine;
-using KingdomOfHope.Inputs;
-using UnityEditor;
 
 public class PlayerController : MonoBehaviour
 {
-    #region Unity Inspector
-
-    [SerializeField] private Rigidbody2D rb;
+    [SerializeField] private Rigidbody2D rigidbody;
+    [SerializeField] private float playerspeed;
     [SerializeField] private Animator animator;
-    [SerializeField] private SpriteRenderer playerSprite;
-    [SerializeField] private float playerSpeed;
-
-    #endregion
-
-    #region Private Fields
-
-    private IPlayerInput input;
-    private float horizontal;
-    private float vertical;
-    private Vector2 movement;
-    private bool canMove = true;
-
-    #endregion
-
-    #region Unity LifeCycle
+    
+    private PcInputs inputs;
+    private MoveWithMovePosition mover;
 
     private void Awake()
     {
-        // Create new PC input.
-        input = new PcInputs();
-    }
-
-    private void Update()
-    {
-        Attack();
+        inputs = new PcInputs();
+        mover = new MoveWithMovePosition(playerspeed, rigidbody);
     }
 
     private void FixedUpdate()
     {
-        Move();
-    }
+        float horizontal = inputs.Horizontal;
+        float vertical = inputs.Vertical;
 
-    #endregion
-
-    #region Private Methods
-
-    private void Move()
-    {
-        // Get horizontal and vertical move value.
-        horizontal = input.Horizontal;
-        vertical = input.Vertical;
-        movement.x = horizontal;
-        movement.y = vertical;
-
-        if (canMove)
+        if (horizontal != 0 || vertical != 0)
         {
-            bool success = movement != Vector2.zero;
-
-            if (success)
-            {
-                // If player try move.
-                FlipFace();
-                rb.MovePosition(rb.position + movement.normalized * playerSpeed * Time.fixedDeltaTime);
-                animator.SetBool("isMoving", success);
-            }
-            else
-            {
-                animator.SetBool("isMoving", false);
-            }
+            mover.Move(horizontal, vertical);
+            animator.SetBool("isMoving", true);
         }
-
         else
         {
             animator.SetBool("isMoving", false);
         }
     }
-
-    private void Attack()
-    {
-        if (input.AttackButtonDown)
-        {
-            LockMovement();
-            animator.SetTrigger("attack");
-        }
-    }
-
-    private void FlipFace()
-    {
-        if (movement.x < 0)
-        {
-            playerSprite.flipX = true;
-        }
-        else if (movement.x > 0)
-        {
-            playerSprite.flipX = false;
-        }
-    }
-
-    private void LockMovement()
-    {
-        canMove = false;
-        movement = Vector3.zero;;
-    }
-
-    public void UnlockMovement()
-    {
-        canMove = true;
-    }
-
-    #endregion
 }

@@ -13,9 +13,7 @@ GameObject:
   - component: {fileID: 5860856664839952376}
   - component: {fileID: 3645305172618003953}
   - component: {fileID: 5312490001231698254}
-  - component: {fileID: 5312490001231698255}
-  - component: {fileID: 3250835496475712887}
-  - component: {fileID: 2036463721097689888}
+  - component: {fileID: 131123681719470327}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -158,7 +156,7 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &5312490001231698255
+--- !u!114 &131123681719470327
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -170,37 +168,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 383fb07cf42511c4b814a22066cd541f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rb: {fileID: 5860856664839952376}
+  rigidbody: {fileID: 5860856664839952376}
+  playerspeed: 1
   animator: {fileID: 5312490001231698254}
-  playerSprite: {fileID: 5312490001231698252}
-  playerSpeed: 1
---- !u!114 &3250835496475712887
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 622412237399506170}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0c740673e23b10643ad8a7f1512fe640, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  damage: 5
-  attackDirection: {fileID: 8955628239352380370}
-  attackRadius: 0.08
---- !u!114 &2036463721097689888
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 622412237399506170}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 86076181a0c463442b555684f24dd681, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &2051482772255220614
 GameObject:
   m_ObjectHideFlags: 0
