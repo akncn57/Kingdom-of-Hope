@@ -4,6 +4,20 @@ namespace KingdomOfHope.Movement
 {
     public class FlipFace : IFlipFace
     {
+        private float horizontal;
+        private SpriteRenderer sprite;
+        
+        /// <summary>
+        ///  This constructor get horizontal movement value and flip face.
+        /// </summary>
+        /// <param name="horizontal"> Get horizontal movement. </param>
+        /// <param name="sprite"> Get sprite to flip. </param>
+        public FlipFace(float horizontal, SpriteRenderer sprite)
+        {
+            this.horizontal = horizontal;
+            this.sprite = sprite;
+        }
+        
         /// <summary>
         ///  This method fliping face by horizontal move value.
         /// </summary>

@@ -5,28 +5,42 @@ namespace KingdomOfHope.Player
 {
     public class PlayerController : MonoBehaviour
     {
+        #region Inspector Fields
+        
         [SerializeField] private Rigidbody2D rigidbody;
         [SerializeField] private SpriteRenderer sprite;
+        [SerializeField] private Transform attackDirection;
         [SerializeField] private float playerspeed;
+        [SerializeField] private float attackRadius;
         [SerializeField] private Animator animator;
+        
+        #endregion
+        
+        #region Private Fields
     
         private PcInputs inputs;
         private MoveWithMovePosition mover;
         private Attacker attacker;
         private FlipFace flipFace;
+        private float horizontal;
+        private float vertical;
+        
+        #endregion
+        
+        #region Unity Life Cycle
 
         private void Awake()
         {
             inputs = new PcInputs();
             mover = new MoveWithMovePosition(playerspeed, rigidbody);
-            attacker = new Attacker();
-            flipFace = new FlipFace();
+            attacker = new Attacker(attackDirection, attackRadius);
+            flipFace = new FlipFace(horizontal, sprite);
         }
 
         private void FixedUpdate()
         {
-            float horizontal = inputs.Horizontal;
-            float vertical = inputs.Vertical;
+            horizontal = inputs.Horizontal;
+            vertical = inputs.Vertical;
             bool attackButton = inputs.AttackButtonDown;
 
             if (horizontal != 0 || vertical != 0)
@@ -36,12 +50,12 @@ namespace KingdomOfHope.Player
                 animator.SetBool("isMoving", true);
             }
             else
-            {
                 animator.SetBool("isMoving", false);
-            }
-            
+
             if (attackButton)
                 attacker.Attack();
         }
+        
+        #endregion
     }
 }

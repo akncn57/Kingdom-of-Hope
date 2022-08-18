@@ -170,7 +170,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rigidbody: {fileID: 5860856664839952376}
   sprite: {fileID: 5312490001231698252}
+  attackDirection: {fileID: 8955628239352380370}
   playerspeed: 1
+  attackRadius: 1
   animator: {fileID: 5312490001231698254}
 --- !u!1 &2051482772255220614
 GameObject:
