@@ -1,3 +1,4 @@
+using System;
 using KingdomOfHope.Movement;
 using UnityEngine;
 
@@ -37,11 +38,21 @@ namespace KingdomOfHope.Player
             flipFace = new FlipFace(horizontal, sprite);
         }
 
+        private void Update()
+        {
+            bool attackButton = inputs.AttackButtonDown;
+
+            if (attackButton)
+            {
+                attacker.Attack();
+                animator.SetTrigger("attack");
+            }
+        }
+
         private void FixedUpdate()
         {
             horizontal = inputs.Horizontal;
             vertical = inputs.Vertical;
-            bool attackButton = inputs.AttackButtonDown;
 
             if (horizontal != 0 || vertical != 0)
             {
@@ -51,9 +62,6 @@ namespace KingdomOfHope.Player
             }
             else
                 animator.SetBool("isMoving", false);
-
-            if (attackButton)
-                attacker.Attack();
         }
         
         #endregion
