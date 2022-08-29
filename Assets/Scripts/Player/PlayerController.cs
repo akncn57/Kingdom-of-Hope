@@ -1,6 +1,8 @@
 using System;
+using System.Collections;
 using KingdomOfHope.Movement;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 namespace KingdomOfHope.Player
 {
@@ -14,6 +16,10 @@ namespace KingdomOfHope.Player
         [SerializeField] private float playerspeed;
         [SerializeField] private float attackRadius;
         [SerializeField] private Animator animator;
+        [Header("----------AUDIO----------")]
+        [SerializeField] private AudioSource audioSource;
+        [SerializeField] private AudioClip[] walkGrassSounds;
+        [SerializeField] private AudioClip[] attackSounds;
         
         #endregion
         
@@ -62,6 +68,20 @@ namespace KingdomOfHope.Player
             }
             else
                 animator.SetBool("isMoving", false);
+        }
+
+        public void PlayRandomWalkSound()
+        {
+            AudioClip randomWalkSound = walkGrassSounds[Random.Range(0, walkGrassSounds.Length)];
+            audioSource.clip = randomWalkSound;
+            audioSource.Play();
+        }
+
+        public void PlayRandomAttackSound()
+        {
+            AudioClip randomAttackSound = attackSounds[Random.Range(0, attackSounds.Length)];
+            audioSource.clip = randomAttackSound;
+            audioSource.Play();
         }
         
         #endregion
