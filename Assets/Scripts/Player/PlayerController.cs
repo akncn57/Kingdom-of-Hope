@@ -4,7 +4,7 @@ using KingdomOfHope.Movement;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
-namespace KingdomOfHope.Player
+namespace KingdomOfHope.Controller
 {
     public class PlayerController : MonoBehaviour
     {

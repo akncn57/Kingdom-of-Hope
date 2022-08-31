@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 3505950004529407973}
   - component: {fileID: 3505950004529407974}
   - component: {fileID: 3505950004529407961}
+  - component: {fileID: 2795262995466478583}
   m_Layer: 0
   m_Name: Enemy_Slime
   m_TagString: Untagged
@@ -108,7 +109,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!58 &3505950004529407973
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -241,3 +242,18 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &2795262995466478583
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3505950004529407975}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5a4562b0a0b89c549936b962999930b3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  moveSpeed: 2
+  chaseDistance: 3
+  attackDistance: 0.5
