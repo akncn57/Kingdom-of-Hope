@@ -10,6 +10,7 @@ namespace KingdomOfHope.Controller
 {
     public class EnemyController : MonoBehaviour
     {
+        [SerializeField] private Rigidbody2D rigidbody;
         [SerializeField] private float moveSpeed;
         [SerializeField] private float chaseDistance;
         [SerializeField] private float attackDistance;
@@ -24,7 +25,7 @@ namespace KingdomOfHope.Controller
         
         private void Awake()
         {
-            // mover = new MoveWithMovePosition(playerspeed, rigidbody);
+            mover = new MoveWithMovePosition(moveSpeed, rigidbody);
             // attacker = new Attacker(attackDirection, attackRadius);
             // flipFace = new FlipFace(horizontal, sprite);
             stateMachine = new StateMachine();
@@ -32,14 +33,14 @@ namespace KingdomOfHope.Controller
 
         private void Start()
         {
-            Idle idle = new Idle();
+            Idle idle = new Idle(mover);
             Walk walk = new Walk();
             ChasePlayer chasePlayer = new ChasePlayer();
             Dead dead = new Dead();
             TakeHit takeHit = new TakeHit();
             Attack attack = new Attack();
             
-            stateMachine.AddTransition(idle, walk, () => isWalk);
+            stateMachine.AddTransition(idle, walk, () => !idle.IsIdle);
             stateMachine.AddTransition(idle, chasePlayer, () => FindDistanceFromPlayer() < chaseDistance);
             stateMachine.AddTransition(walk, chasePlayer, () => FindDistanceFromPlayer() < chaseDistance);
             stateMachine.AddTransition(chasePlayer, attack, () => FindDistanceFromPlayer() < attackDistance);
@@ -66,6 +67,9 @@ namespace KingdomOfHope.Controller
         {
             Gizmos.color = Color.red;
             Gizmos.DrawWireSphere(transform.position, attackDistance);
+            
+            Gizmos.color = Color.green;
+            Gizmos.DrawWireSphere(transform.position, chaseDistance);
         }
 
         private float FindDistanceFromPlayer()

@@ -254,6 +254,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5a4562b0a0b89c549936b962999930b3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  rigidbody: {fileID: 3505950004529407972}
   moveSpeed: 2
-  chaseDistance: 3
-  attackDistance: 0.5
+  chaseDistance: 0.8
+  attackDistance: 0.3
+  player: {fileID: 0}
+  isWalk: 0
