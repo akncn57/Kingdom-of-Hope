@@ -46,6 +46,9 @@ namespace KingdomOfHope.Controller
             stateMachine.AddTransition(walk, idle, () => !isWalk);
             stateMachine.AddTransition(chasePlayer, idle, () => FindDistanceFromPlayer() > chaseDistance);
             stateMachine.AddTransition(attack, chasePlayer, () => FindDistanceFromPlayer() > attackDistance);
+            //stateMachine.AddAnyState(dead, () => XXX);
+            //stateMachine.AddAnyState(takeHit, () => XXX);
+            //stateMachine.AddTransition(takeHit, chasePlayer, () => XXX);
             stateMachine.SetState(idle);
         }
 

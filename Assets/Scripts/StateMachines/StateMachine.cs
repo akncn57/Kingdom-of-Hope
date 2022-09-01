@@ -7,6 +7,7 @@ namespace KingdomOfHope.StateMachines
     public class StateMachine : MonoBehaviour
     {
         private List<StateTransition> stateTransitions = new List<StateTransition>();
+        private List<StateTransition> anyStateTransitions = new List<StateTransition>();
         private IState currentState;
 
         /// <summary>
@@ -38,6 +39,11 @@ namespace KingdomOfHope.StateMachines
         /// </summary>
         private StateTransition CheckForTransition()
         {
+            foreach (StateTransition anyStateTransition in anyStateTransitions)
+            {
+                if (anyStateTransition.Condition.Invoke()) return anyStateTransition;
+            }
+            
             foreach (StateTransition stateTransition in stateTransitions)
             {
                 if (stateTransition.Condition() && stateTransition.From == currentState)
@@ -59,6 +65,12 @@ namespace KingdomOfHope.StateMachines
         {
             StateTransition stateTransition = new StateTransition(from, to, condition);
             stateTransitions.Add(stateTransition);
+        }
+
+        public void AddAnyState(IState to, System.Func<bool> condition)
+        {
+            StateTransition anyStateTransition = new StateTransition(null, to, condition);
+            anyStateTransitions.Add(anyStateTransition);
         }
     }   
 }
