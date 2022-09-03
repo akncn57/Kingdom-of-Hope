@@ -28,7 +28,7 @@ namespace KingdomOfHope.Controller
         private PcInputs inputs;
         private MoveWithMovePosition mover;
         private Attacker attacker;
-        private FlipFace flipFace;
+        private FlipFaceWithSpriteRenderer flipFaceWithSpriteRenderer;
         private float horizontal;
         private float vertical;
         
@@ -41,7 +41,7 @@ namespace KingdomOfHope.Controller
             inputs = new PcInputs();
             mover = new MoveWithMovePosition(playerspeed, rigidbody);
             attacker = new Attacker(attackDirection, attackRadius);
-            flipFace = new FlipFace(horizontal, sprite);
+            flipFaceWithSpriteRenderer = new FlipFaceWithSpriteRenderer(horizontal, sprite);
         }
 
         private void Update()
@@ -62,7 +62,7 @@ namespace KingdomOfHope.Controller
 
             if (horizontal != 0 || vertical != 0)
             {
-                flipFace.FlipingFace(horizontal, sprite);
+                flipFaceWithSpriteRenderer.FlipingFace(horizontal);
                 mover.Move(horizontal, vertical);
                 animator.SetBool("isMoving", true);
             }

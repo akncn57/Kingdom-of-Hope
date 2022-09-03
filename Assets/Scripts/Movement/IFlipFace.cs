@@ -4,6 +4,6 @@ namespace KingdomOfHope.Movement
 {
     public interface IFlipFace
     {
-        void FlipingFace(float horizontal, SpriteRenderer sprite);
+        void FlipingFace(float direction);
     }
 }

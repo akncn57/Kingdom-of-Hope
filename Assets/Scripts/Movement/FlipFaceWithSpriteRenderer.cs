@@ -2,7 +2,7 @@
 
 namespace KingdomOfHope.Movement
 {
-    public class FlipFace : IFlipFace
+    public class FlipFaceWithSpriteRenderer : IFlipFace
     {
         private float horizontal;
         private SpriteRenderer sprite;
@@ -12,7 +12,7 @@ namespace KingdomOfHope.Movement
         /// </summary>
         /// <param name="horizontal"> Get horizontal movement. </param>
         /// <param name="sprite"> Get sprite to flip. </param>
-        public FlipFace(float horizontal, SpriteRenderer sprite)
+        public FlipFaceWithSpriteRenderer(float horizontal, SpriteRenderer sprite)
         {
             this.horizontal = horizontal;
             this.sprite = sprite;
@@ -23,7 +23,7 @@ namespace KingdomOfHope.Movement
         /// </summary>
         /// <param name="horizontal"> Get horizontal movement value. </param>
         /// <param name="sprite"> Get sprite component. </param>
-        public void FlipingFace(float horizontal, SpriteRenderer sprite)
+        public void FlipingFace(float horizontal)
         {
             if (horizontal < 0)
                 sprite.flipX = true;
