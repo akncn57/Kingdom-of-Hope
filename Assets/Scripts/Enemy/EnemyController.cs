@@ -17,7 +17,7 @@ namespace KingdomOfHope.Controller
         [SerializeField] private Transform player;
         [SerializeField] private bool isWalk = false;
         
-        private MoveWithMovePosition mover;
+        private MoveWithTranslate mover;
         private Attacker attacker;
         private FlipFace flipFace;
         
@@ -25,7 +25,7 @@ namespace KingdomOfHope.Controller
         
         private void Awake()
         {
-            mover = new MoveWithMovePosition(moveSpeed, rigidbody);
+            mover = new MoveWithTranslate(moveSpeed, transform);
             // attacker = new Attacker(attackDirection, attackRadius);
             // flipFace = new FlipFace(horizontal, sprite);
             stateMachine = new StateMachine();
