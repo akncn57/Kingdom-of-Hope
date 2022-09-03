@@ -1,5 +1,6 @@
 using System;
 using System.Collections;
+using Animation;
 using KingdomOfHope.Movement;
 using UnityEngine;
 using Random = UnityEngine.Random;
@@ -26,11 +27,13 @@ namespace KingdomOfHope.Controller
         #region Private Fields
     
         private PcInputs inputs;
+        private CharacterAnimations animations;
         private MoveWithMovePosition mover;
         private Attacker attacker;
         private FlipFaceWithSpriteRenderer flipFaceWithSpriteRenderer;
         private float horizontal;
         private float vertical;
+        private bool isMoving = false;
         
         #endregion
         
@@ -39,6 +42,7 @@ namespace KingdomOfHope.Controller
         private void Awake()
         {
             inputs = new PcInputs();
+            animations = new CharacterAnimations(animator);
             mover = new MoveWithMovePosition(playerspeed, rigidbody);
             attacker = new Attacker(attackDirection, attackRadius);
             flipFaceWithSpriteRenderer = new FlipFaceWithSpriteRenderer(horizontal, sprite);
@@ -51,7 +55,7 @@ namespace KingdomOfHope.Controller
             if (attackButton)
             {
                 attacker.Attack();
-                animator.SetTrigger("attack");
+                animations.AttackAnimation();
             }
         }
 
@@ -62,12 +66,16 @@ namespace KingdomOfHope.Controller
 
             if (horizontal != 0 || vertical != 0)
             {
+                isMoving = true;
                 flipFaceWithSpriteRenderer.FlipingFace(horizontal);
                 mover.Move(horizontal, vertical);
-                animator.SetBool("isMoving", true);
+                animations.MoveAnimation(isMoving);
             }
             else
-                animator.SetBool("isMoving", false);
+            {
+                isMoving = false;
+                animations.MoveAnimation(isMoving);
+            }
         }
 
         public void PlayRandomWalkSound()
