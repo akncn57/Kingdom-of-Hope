@@ -38,8 +38,8 @@ namespace KingdomOfHope.Controller
 
         private void Start()
         {
-            Idle idle = new Idle(mover, animation);
-            Walk walk = new Walk(transform, mover, flipFaceWithTransform, animation, patrols);
+            Idle idle = new Idle(this, mover, animation, flipFaceWithTransform);
+            Walk walk = new Walk(this, mover, flipFaceWithTransform, animation, patrols);
             ChasePlayer chasePlayer = new ChasePlayer();
             Dead dead = new Dead();
             TakeHit takeHit = new TakeHit();

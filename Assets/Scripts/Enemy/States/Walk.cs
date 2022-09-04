@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using KingdomOfHope.Controller;
 using KingdomOfHope.Movement;
 using UnityEngine;
 using KingdomOfHope.StateMachines;
@@ -8,7 +9,7 @@ namespace KingdomOfHope.Enemy.States
 {
     public class Walk : IState
     {
-        private Transform enemyTransform;
+        private IEntityController entityController;
         private IMover mover;
         private IFlipFace flipFace;
         private IAnimation animations;
@@ -19,9 +20,9 @@ namespace KingdomOfHope.Enemy.States
 
         public bool IsWalking { get; private set; }
 
-        public Walk(Transform enemyTransform, IMover mover, IFlipFace flipFace, IAnimation animations, params Transform[] patrols)
+        public Walk(IEntityController entityController, IMover mover, IFlipFace flipFace, IAnimation animations, params Transform[] patrols)
         {
-            this.enemyTransform = enemyTransform;
+            this.entityController = entityController;
             this.mover = mover;
             this.flipFace = flipFace;
             this.animations = animations;
@@ -30,7 +31,7 @@ namespace KingdomOfHope.Enemy.States
         
         public void Tick()
         {
-            if (Vector2.Distance(enemyTransform.position, currentPatrol.transform.position) <= 0.2f)
+            if (Vector2.Distance(entityController.transform.position, currentPatrol.transform.position) <= 0.2f)
             {
                 IsWalking = false;
                 return;
@@ -43,6 +44,7 @@ namespace KingdomOfHope.Enemy.States
 
         public void OnEnter()
         {
+            direction = entityController.transform.localScale.x;
             currentPatrol = patrols[patrolIndex];
             animations.MoveAnimation(true);
             IsWalking = true;
@@ -50,8 +52,6 @@ namespace KingdomOfHope.Enemy.States
 
         public void OnExit()
         {
-            direction *= -1;
-            flipFace.FlipingFace(direction);
             animations.MoveAnimation(false);
             
             patrolIndex++;

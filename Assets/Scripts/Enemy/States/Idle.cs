@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using KingdomOfHope.Controller;
 using KingdomOfHope.Movement;
 using UnityEngine;
 using KingdomOfHope.StateMachines;
@@ -11,15 +12,20 @@ namespace KingdomOfHope.Enemy.States
     {
         private IMover mover;
         private IAnimation animations;
+        private IFlipFace flipFace;
+        private IEntityController entityController;
+        
         private float maxStandTime;
         private float currentStandTime = 0f;
 
         public bool IsIdle { get; private set; }
         
-        public Idle(IMover mover, IAnimation aniamtions)
+        public Idle(IEntityController entityController, IMover mover, IAnimation aniamtions, IFlipFace flipFace)
         {
             this.mover = mover;
             this.animations = aniamtions;
+            this.entityController = entityController;
+            this.flipFace = flipFace;
         }
             
         public void Tick()
@@ -41,6 +47,7 @@ namespace KingdomOfHope.Enemy.States
         public void OnExit()
         {
             currentStandTime = 0f;
+            flipFace.FlipingFace(entityController.transform.localScale.x * -1);
         }
     }   
 }
