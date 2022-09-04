@@ -10,14 +10,16 @@ namespace KingdomOfHope.Enemy.States
     public class Idle : IState
     {
         private IMover mover;
+        private IAnimation animations;
         private float maxStandTime;
         private float currentStandTime = 0f;
 
         public bool IsIdle { get; private set; }
         
-        public Idle(IMover mover)
+        public Idle(IMover mover, IAnimation aniamtions)
         {
             this.mover = mover;
+            this.animations = aniamtions;
         }
             
         public void Tick()
@@ -32,17 +34,13 @@ namespace KingdomOfHope.Enemy.States
         public void OnEnter()
         {
             IsIdle = true;
-            //TODO: Idle animasyonunu burada bir şekilde oynat.
+            animations.MoveAnimation(false);
             maxStandTime = Random.Range(4f, 10f);
-            
-            Debug.Log("Enemy Idle / OnEnter");
         }
 
         public void OnExit()
         {
             currentStandTime = 0f;
-
-            Debug.Log("Enemy Idle / OnExit");
         }
     }   
 }

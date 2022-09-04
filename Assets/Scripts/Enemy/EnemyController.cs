@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Animation;
 using KingdomOfHope.Enemy.States;
 using UnityEngine;
 using KingdomOfHope.Movement;
@@ -8,10 +9,11 @@ using KingdomOfHope.StateMachines;
 
 namespace KingdomOfHope.Controller
 {
-    public class EnemyController : MonoBehaviour
+    public class EnemyController : MonoBehaviour, IEntityController
     {
         [SerializeField] private Rigidbody2D rigidbody;
         [SerializeField] private SpriteRenderer sprite;
+        [SerializeField] private Animator animator;
         [SerializeField] private float moveSpeed;
         [SerializeField] private float chaseDistance;
         [SerializeField] private float attackDistance;
@@ -20,7 +22,8 @@ namespace KingdomOfHope.Controller
 
         private MoveWithTranslate mover;
         private Attacker attacker;
-        private FlipFaceWithSpriteRenderer flipFaceWithSpriteRenderer;
+        private IAnimation animation;
+        private FlipWithTransform flipFaceWithTransform;
         
         StateMachine stateMachine;
         
@@ -28,14 +31,15 @@ namespace KingdomOfHope.Controller
         {
             mover = new MoveWithTranslate(moveSpeed, transform);
             // attacker = new Attacker(attackDirection, attackRadius);
-            //flipFaceWithSpriteRenderer = new FlipFaceWithSpriteRenderer(horizontal, sprite);
+            flipFaceWithTransform = new FlipWithTransform(this.transform);
+            animation = new CharacterAnimations(animator);
             stateMachine = new StateMachine();
         }
 
         private void Start()
         {
-            Idle idle = new Idle(mover);
-            Walk walk = new Walk(mover, flipFaceWithSpriteRenderer);
+            Idle idle = new Idle(mover, animation);
+            Walk walk = new Walk(transform, mover, flipFaceWithTransform, animation, patrols);
             ChasePlayer chasePlayer = new ChasePlayer();
             Dead dead = new Dead();
             TakeHit takeHit = new TakeHit();

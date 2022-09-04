@@ -5,12 +5,10 @@ namespace KingdomOfHope.Movement
     public class FlipWithTransform : IFlipFace
     {
         private Transform transform;
-        private float direction;
-        
-        public FlipWithTransform(Transform transform, float direction)
+
+        public FlipWithTransform(Transform transform)
         {
             this.transform = transform;
-            this.direction = direction;
         }
 
         public void FlipingFace(float direction)
