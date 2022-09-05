@@ -16,7 +16,11 @@ namespace KingdomOfHope.Movement
         
         public void Move(float horizontal, float vertical)
         {
-            transform.Translate(Vector2.right * horizontal * Time.deltaTime * speed);
+            // movementDirection.x = horizontal;
+            // movementDirection.y = vertical;
+            //transform.Translate(rigidbody.position + movementDirection.normalized * (speed * Time.fixedDeltaTime));
+            transform.Translate(horizontal * speed * Time.deltaTime,
+                vertical * speed * Time.deltaTime, 0);
         }
     }
 }

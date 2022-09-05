@@ -17,14 +17,13 @@ namespace KingdomOfHope.Controller
         [SerializeField] private float moveSpeed;
         [SerializeField] private float chaseDistance;
         [SerializeField] private float attackDistance;
-        [SerializeField] private Transform player;
         [SerializeField] private Transform[] patrols;
 
         private MoveWithTranslate mover;
         private Attacker attacker;
         private IAnimation animation;
         private FlipWithTransform flipFaceWithTransform;
-        
+        IEntityController player;
         StateMachine stateMachine;
         
         private void Awake()
@@ -34,13 +33,14 @@ namespace KingdomOfHope.Controller
             flipFaceWithTransform = new FlipWithTransform(this.transform);
             animation = new CharacterAnimations(animator);
             stateMachine = new StateMachine();
+            player = FindObjectOfType<PlayerController>();
         }
 
         private void Start()
         {
             Idle idle = new Idle(this, mover, animation, flipFaceWithTransform);
             Walk walk = new Walk(this, mover, flipFaceWithTransform, animation, patrols);
-            ChasePlayer chasePlayer = new ChasePlayer();
+            ChasePlayer chasePlayer = new ChasePlayer(this, player, mover, flipFaceWithTransform, animation);
             Dead dead = new Dead();
             TakeHit takeHit = new TakeHit();
             Attack attack = new Attack();

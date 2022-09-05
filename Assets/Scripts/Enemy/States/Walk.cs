@@ -31,7 +31,7 @@ namespace KingdomOfHope.Enemy.States
         
         public void Tick()
         {
-            if (Vector2.Distance(entityController.transform.position, currentPatrol.transform.position) <= 0.2f)
+            if (Vector2.Distance(entityController.transform.position, currentPatrol.transform.position) <= 0.1f)
             {
                 IsWalking = false;
                 return;

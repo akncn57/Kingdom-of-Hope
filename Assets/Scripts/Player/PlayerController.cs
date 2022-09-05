@@ -7,7 +7,7 @@ using Random = UnityEngine.Random;
 
 namespace KingdomOfHope.Controller
 {
-    public class PlayerController : MonoBehaviour
+    public class PlayerController : MonoBehaviour, IEntityController
     {
         #region Inspector Fields
         
