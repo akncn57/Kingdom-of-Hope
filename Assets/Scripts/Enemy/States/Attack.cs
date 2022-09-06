@@ -7,8 +7,17 @@ namespace KingdomOfHope.Enemy.States
 {
     public class Attack : IState
     {
+        private IAnimation animations;
+        
+        public Attack(IAnimation animations)
+        {
+            this.animations = animations;
+        }
+        
         public void Tick()
         {
+            animations.AttackAnimation();
+            
             Debug.Log("Enemy Attack / Tick");
         }
 

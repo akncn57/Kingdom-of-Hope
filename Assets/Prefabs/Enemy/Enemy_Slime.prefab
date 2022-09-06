@@ -97,7 +97,7 @@ Rigidbody2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3505950004529407975}
-  m_BodyType: 0
+  m_BodyType: 1
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
@@ -258,9 +258,8 @@ MonoBehaviour:
   sprite: {fileID: 3505950004529407963}
   animator: {fileID: 3505950004529407974}
   moveSpeed: 0.5
-  chaseDistance: 0.8
-  attackDistance: 0.3
-  player: {fileID: 0}
+  chaseDistance: 0.6
+  attackDistance: 0.13
   patrols:
   - {fileID: 0}
   - {fileID: 0}

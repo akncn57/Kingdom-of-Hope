@@ -32,12 +32,12 @@ namespace KingdomOfHope.Enemy.States
 
             if (lefOrRight.x > 0.1)
             {
-                mover.Move(1f, upOrDown);
+                mover.Move(1.2f, upOrDown);
                 flipFace.FlipingFace(1f);
             }
             else
             {
-                mover.Move(-1f, upOrDown);
+                mover.Move(-1.2f, upOrDown);
                 flipFace.FlipingFace(-1f);
             }
 

@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using Animation;
+using KingdomOfHope.Combats;
 using KingdomOfHope.Enemy.States;
 using UnityEngine;
 using KingdomOfHope.Movement;
@@ -19,12 +20,12 @@ namespace KingdomOfHope.Controller
         [SerializeField] private float attackDistance;
         [SerializeField] private Transform[] patrols;
 
-        private MoveWithTranslate mover;
-        private Attacker attacker;
+        private IMover mover;
+        private IAttacker attacker;
         private IAnimation animation;
-        private FlipWithTransform flipFaceWithTransform;
-        IEntityController player;
-        StateMachine stateMachine;
+        private IFlipFace flipFaceWithTransform;
+        private IEntityController player;
+        private StateMachine stateMachine;
         
         private void Awake()
         {
@@ -43,7 +44,7 @@ namespace KingdomOfHope.Controller
             ChasePlayer chasePlayer = new ChasePlayer(this, player, mover, flipFaceWithTransform, animation);
             Dead dead = new Dead();
             TakeHit takeHit = new TakeHit();
-            Attack attack = new Attack();
+            Attack attack = new Attack(animation);
             
             stateMachine.AddTransition(idle, walk, () => !idle.IsIdle);
             stateMachine.AddTransition(idle, chasePlayer, () => FindDistanceFromPlayer() < chaseDistance);

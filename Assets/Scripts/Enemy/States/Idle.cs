@@ -23,7 +23,7 @@ namespace KingdomOfHope.Enemy.States
         public Idle(IEntityController entityController, IMover mover, IAnimation aniamtions, IFlipFace flipFace)
         {
             this.mover = mover;
-            this.animations = aniamtions;
+            animations = aniamtions;
             this.entityController = entityController;
             this.flipFace = flipFace;
         }

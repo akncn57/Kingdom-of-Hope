@@ -1,6 +1,8 @@
 using System;
 using System.Collections;
 using Animation;
+using KingdomOfHope.Combats;
+using KingdomOfHope.Inputs;
 using KingdomOfHope.Movement;
 using UnityEngine;
 using Random = UnityEngine.Random;
@@ -26,11 +28,12 @@ namespace KingdomOfHope.Controller
         
         #region Private Fields
     
-        private PcInputs inputs;
-        private CharacterAnimations animations;
-        private MoveWithMovePosition mover;
-        private Attacker attacker;
-        private FlipFaceWithSpriteRenderer flipFaceWithSpriteRenderer;
+        private IPlayerInput inputs;
+        private IAnimation animations;
+        private IMover mover;
+        private IAttacker attacker;
+        private IFlipFace flipFace;
+        
         private float horizontal;
         private float vertical;
         private bool isMoving = false;
@@ -45,7 +48,7 @@ namespace KingdomOfHope.Controller
             animations = new CharacterAnimations(animator);
             mover = new MoveWithMovePosition(playerspeed, rigidbody);
             attacker = new Attacker(attackDirection, attackRadius);
-            flipFaceWithSpriteRenderer = new FlipFaceWithSpriteRenderer(horizontal, sprite);
+            flipFace = new FlipFaceWithSpriteRenderer(horizontal, sprite);
         }
 
         private void Update()
@@ -67,7 +70,7 @@ namespace KingdomOfHope.Controller
             if (horizontal != 0 || vertical != 0)
             {
                 isMoving = true;
-                flipFaceWithSpriteRenderer.FlipingFace(horizontal);
+                flipFace.FlipingFace(horizontal);
                 mover.Move(horizontal, vertical);
                 animations.MoveAnimation(isMoving);
             }
