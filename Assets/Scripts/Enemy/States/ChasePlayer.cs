@@ -28,7 +28,6 @@ namespace KingdomOfHope.Enemy.States
         {
             Vector3 lefOrRight = player.transform.position - enemy.transform.position;
             var upOrDown = player.transform.position.y - enemy.transform.position.y;
-            Debug.Log("UpOrDown =" + upOrDown);
 
             if (lefOrRight.x > 0.1)
             {

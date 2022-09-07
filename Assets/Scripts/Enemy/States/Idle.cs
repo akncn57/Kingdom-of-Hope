@@ -41,7 +41,7 @@ namespace KingdomOfHope.Enemy.States
         {
             IsIdle = true;
             animations.MoveAnimation(false);
-            maxStandTime = Random.Range(4f, 10f);
+            maxStandTime = Random.Range(2f, 6f);
         }
 
         public void OnExit()
