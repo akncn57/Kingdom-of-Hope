@@ -31,7 +31,7 @@ namespace KingdomOfHope.Controller
         {
             mover = new MoveWithTranslate(moveSpeed, transform);
             // attacker = new Attacker(attackDirection, attackRadius);
-            flipFaceWithTransform = new FlipWithTransform(this.transform);
+            flipFaceWithTransform = new FlipWithTransform(this);
             animation = new CharacterAnimations(animator);
             stateMachine = new StateMachine();
             player = FindObjectOfType<PlayerController>();

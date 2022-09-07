@@ -1,14 +1,15 @@
-﻿using UnityEngine;
+﻿using KingdomOfHope.Controller;
+using UnityEngine;
 
 namespace KingdomOfHope.Movement
 {
     public class FlipWithTransform : IFlipFace
     {
-        private Transform transform;
+        private IEntityController entityController;
 
-        public FlipWithTransform(Transform transform)
+        public FlipWithTransform(IEntityController entityController)
         {
-            this.transform = transform;
+            this.entityController = entityController;
         }
 
         public void FlipingFace(float direction)
@@ -17,9 +18,9 @@ namespace KingdomOfHope.Movement
 
             float mathValue = Mathf.Sign(direction);
 
-            if(mathValue != transform.localScale.x)
+            if(mathValue != entityController.transform.localScale.x)
             {
-                transform.localScale = new Vector2(mathValue, 1f);
+                entityController.transform.localScale = new Vector2(mathValue, 1f);
             }
         }
     }
